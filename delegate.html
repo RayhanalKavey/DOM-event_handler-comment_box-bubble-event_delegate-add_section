@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event delegate</title>
+  </head>
+  <body>
+    <h1>Explore event delegate</h1>
+    <section>
+      <ul id="list-container">
+        <li class="item">Lorem, ipsum.</li>
+        <li class="item">Similique, perferendis!</li>
+        <li class="item">Dolor, dolore.</li>
+        <li class="item">Dolor, assumenda!</li>
+        <li class="item">Iusto, assumenda!</li>
+        <li class="item">Ullam, fugit.</li>
+      </ul>
+      <button id="btn-add-item">Add item</button>
+    </section>
+    <script>
+      //----------------
+      //add event handler to the items(It will not be reached by new added elemet, so we have to delegate the event handler to the parent container.)
+      //----------------
+      // const items = document.getElementsByClassName("item");
+      // for (const item of items) {
+      //   item.addEventListener("click", function (event) {
+      //     // console.log(item);
+      //     // console.log(event.target.parentNode);
+      //     // item.parentNode.removeChild(item);
+      //     event.target.parentNode.removeChild(event.target);
+      //   });
+      // }
+      //----------------
+      //BECAUSE OF BUBBLE EFFECT WE CAN DELEGATE the event handler TO THE PARENT ELEMENT
+      //----------------
+      document
+        .getElementById("list-container")
+        .addEventListener("click", function (event) {
+          event.target.parentNode.removeChild(event.target);
+        });
+      //----------------
+      //btn for add new items
+      //----------------
+      document
+        .getElementById("btn-add-item")
+        .addEventListener("click", function () {
+          const listContainer = document.getElementById("list-container");
+          //Create new html element and add to the list container
+          const list = document.createElement("li");
+
+          list.innerText = "New content added!";
+          list.classList.add("items"); //add a class
+          listContainer.appendChild(list);
+        });
+      // const elm = document.querySelector(".item");
+      // console.log(elm.parent);
+    </script>
+  </body>
+</html>
