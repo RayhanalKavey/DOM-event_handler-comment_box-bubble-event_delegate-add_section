@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add section with JavaScript</title>
+  </head>
+  <body>
+    <main id="main-container">
+      <section>
+        <h1>Demo section</h1>
+        <ul>
+          <li>item-1</li>
+          <li>item-2</li>
+          <li>item-3</li>
+          <li>item-4</li>
+          <li>item-5</li>
+          <li>item-6</li>
+        </ul>
+      </section>
+    </main>
+    <script>
+      //-----------------
+      //Where to add section
+      //-----------------
+      const mainContainer = document.getElementById("main-container");
+      //-----------------
+      //What to add
+      //-----------------
+      const section = document.createElement("section");
+      //add h1 to section
+      const h1 = document.createElement("h1");
+      h1.innerText = "My Food list";
+      section.appendChild(h1);
+      //add li to ul and ul to section
+      const ul = document.createElement("ul");
+      const li1 = document.createElement("li");
+      li1.innerText = "Biriani";
+      ul.appendChild(li1);
+      const li2 = document.createElement("li");
+      li2.innerText = "Salad";
+      ul.appendChild(li2);
+      section.appendChild(ul);
+      // section.innerHTML = `
+      // <ul>
+      //   <li>Lorem-1</li>
+      //   <li>Lorem-2</li>
+      //   <li>Lorem-3</li>
+      //   </ul>
+      // `;
+      //-----------------
+      //add section to main container
+      //-----------------
+      mainContainer.appendChild(section);
+      //-----------------
+      //set inner html directly
+      //-----------------
+      const sectionDress = document.createElement("section");
+      sectionDress.innerHTML = `
+      <h1>My dress section</h1>
+      <ul>
+        <li>T-shirt</li>
+        <li>Panjabu</li>
+        <li>Ginse pant</li>
+        </ul>
+      `;
+      mainContainer.appendChild(sectionDress);
+    </script>
+  </body>
+</html>
